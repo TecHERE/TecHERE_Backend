@@ -17,6 +17,7 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 application-env.properties
+application-docker.properties
 
 ### IntelliJ IDEA ###
 .idea
