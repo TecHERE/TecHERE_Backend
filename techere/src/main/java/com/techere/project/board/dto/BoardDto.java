@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
  * @update-author : 000
  * @update-description :
  */
-@Data
+@Data 
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
