@@ -1,7 +1,7 @@
 package com.techere.project.kafkachat.service;
 
 import com.techere.project.kafkachat.constants.KafkaConstants;
-import com.techere.project.kafkachat.model.Message;
+import com.techere.project.kafkachat.model.KafkaMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -15,7 +15,7 @@ public class KafkaSampleConsumerService {
     private final SimpMessagingTemplate template;
 
     @KafkaListener(topics = KafkaConstants.KAFKA_TOPIC, groupId = KafkaConstants.GROUP_ID)
-    public void listen(Message message) {
+    public void listen(KafkaMessage message) {
         log.info("sending via kafka listener..");
         template.convertAndSend("/topic/group", message);
     }

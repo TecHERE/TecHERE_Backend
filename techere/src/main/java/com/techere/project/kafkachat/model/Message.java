@@ -1,16 +1,29 @@
 package com.techere.project.kafkachat.model;
 
+import com.techere.project.global.domain.BaseTimeEntity;
 import lombok.*;
 
-import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-@Getter
+@Entity
 @Setter
-@ToString
-@NoArgsConstructor
+@Getter
+@Builder
 @AllArgsConstructor
-public class Message implements Serializable {
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@ToString
+public class Message extends BaseTimeEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     private String author;
+
     private String content;
+
     private String timestamp;
 }
