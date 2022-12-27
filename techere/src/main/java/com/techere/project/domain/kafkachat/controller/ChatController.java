@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "/chat")
+@RequestMapping(value = "api/v1/chat")
 public class ChatController {
 
     private final KafkaTemplate<String, KafkaMessage> kafkaTemplate;
