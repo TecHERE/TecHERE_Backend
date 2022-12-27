@@ -1,12 +1,12 @@
-package com.techere.project.kafkachat.model;
+package com.techere.project.domain.kafkachat.model;
 
-import com.techere.project.global.domain.BaseTimeEntity;
+
+
+import com.techere.project.domain.room.model.Room;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Setter
@@ -15,11 +15,15 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
-public class Message extends BaseTimeEntity {
+public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @NotNull
+    @ManyToOne
+    private Room room;
 
     private String author;
 

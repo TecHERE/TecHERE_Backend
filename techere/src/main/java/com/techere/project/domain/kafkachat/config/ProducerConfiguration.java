@@ -1,7 +1,7 @@
-package com.techere.project.kafkachat.config;
+package com.techere.project.domain.kafkachat.config;
 
-import com.techere.project.kafkachat.constants.KafkaConstants;
-import com.techere.project.kafkachat.model.KafkaMessage;
+import com.techere.project.domain.kafkachat.constants.KafkaConstants;
+import com.techere.project.domain.kafkachat.model.KafkaMessage;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;

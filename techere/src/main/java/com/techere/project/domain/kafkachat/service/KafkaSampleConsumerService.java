@@ -1,7 +1,7 @@
-package com.techere.project.kafkachat.service;
+package com.techere.project.domain.kafkachat.service;
 
-import com.techere.project.kafkachat.constants.KafkaConstants;
-import com.techere.project.kafkachat.model.KafkaMessage;
+import com.techere.project.domain.kafkachat.constants.KafkaConstants;
+import com.techere.project.domain.kafkachat.model.KafkaMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;

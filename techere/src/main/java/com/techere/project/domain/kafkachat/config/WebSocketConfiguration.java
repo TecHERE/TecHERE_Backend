@@ -1,4 +1,4 @@
-package com.techere.project.kafkachat.config;
+package com.techere.project.domain.kafkachat.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

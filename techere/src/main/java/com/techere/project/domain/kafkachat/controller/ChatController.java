@@ -1,25 +1,22 @@
-package com.techere.project.kafkachat.controller;
+package com.techere.project.domain.kafkachat.controller;
 
-import com.techere.project.kafkachat.constants.KafkaConstants;
-import com.techere.project.kafkachat.dto.mapper.ChatMapper;
-import com.techere.project.kafkachat.dto.request.MessageRequestDto;
-import com.techere.project.kafkachat.model.KafkaMessage;
-import com.techere.project.kafkachat.service.ChatService;
+import com.techere.project.domain.kafkachat.constants.KafkaConstants;
+import com.techere.project.domain.kafkachat.dto.mapper.ChatMapper;
+import com.techere.project.domain.kafkachat.dto.request.MessageRequestDto;
+import com.techere.project.domain.kafkachat.service.ChatService;
+import com.techere.project.domain.kafkachat.model.KafkaMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-
 @Slf4j
 @CrossOrigin
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "/kafka")
+@RequestMapping(value = "/chat")
 public class ChatController {
 
     private final KafkaTemplate<String, KafkaMessage> kafkaTemplate;
@@ -27,9 +24,11 @@ public class ChatController {
     private final ChatService chatService;
     private final ChatMapper chatMapper;
 
-    @MessageMapping("/sendMessage")
+    @MessageMapping("/messages")
     @SendTo("/topic/group")
-    public void send_message(@RequestBody MessageRequestDto message) {
+    @PostMapping("/messages/{roomId}")
+
+    public String send_message(@RequestBody MessageRequestDto message, @PathVariable Long roomId) {
         KafkaMessage kafkaMessage = chatMapper.toKafkaMessage(message);
 
         log.info("Produce message : " + message.toString());
@@ -39,7 +38,8 @@ public class ChatController {
             throw new RuntimeException(e);
         }
 
-        chatService.create(kafkaMessage);
+        chatService.create(kafkaMessage, roomId);
+        return "success";
     }
 
 

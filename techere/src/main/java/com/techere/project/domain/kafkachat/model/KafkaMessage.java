@@ -1,4 +1,4 @@
-package com.techere.project.kafkachat.model;
+package com.techere.project.domain.kafkachat.model;
 
 import lombok.*;
 

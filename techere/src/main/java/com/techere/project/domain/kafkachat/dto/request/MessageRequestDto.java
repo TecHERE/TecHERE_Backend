@@ -1,4 +1,4 @@
-package com.techere.project.kafkachat.dto.request;
+package com.techere.project.domain.kafkachat.dto.request;
 
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
