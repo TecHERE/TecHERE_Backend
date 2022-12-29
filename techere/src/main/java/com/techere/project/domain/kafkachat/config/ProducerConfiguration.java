@@ -1,7 +1,7 @@
-package com.techere.project.kafkachat.config;
+package com.techere.project.domain.kafkachat.config;
 
-import com.techere.project.kafkachat.constants.KafkaConstants;
-import com.techere.project.kafkachat.model.Message;
+import com.techere.project.domain.kafkachat.constants.KafkaConstants;
+import com.techere.project.domain.kafkachat.model.KafkaMessage;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;
@@ -19,7 +19,7 @@ import java.util.Map;
 @Configuration
 public class ProducerConfiguration {
     @Bean
-    public ProducerFactory<String, Message> producerFactory() {
+    public ProducerFactory<String, KafkaMessage> producerFactory() {
         return new DefaultKafkaProducerFactory<>(producerConfigurations());
     }
 
@@ -33,7 +33,7 @@ public class ProducerConfiguration {
     }
 
     @Bean
-    public KafkaTemplate<String, Message> kafkaTemplate() {
+    public KafkaTemplate<String, KafkaMessage> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 }

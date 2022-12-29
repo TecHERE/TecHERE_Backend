@@ -1,4 +1,4 @@
-package com.techere.project.kafkachat.constants;
+package com.techere.project.domain.kafkachat.constants;
 
 public class KafkaConstants {
     public static final String KAFKA_TOPIC = "kafka-chat";
